@@ -12,8 +12,7 @@ package listas.enlazadas;
 public class Tren {
     
     Vagon primero;
-    Vagon ultimo;
-
+  
    //constructor del tren
     public Tren() {
     }
@@ -74,10 +73,70 @@ public class Tren {
                 c++;
                 aux=aux.getSiguiente();
             }
-        System.out.println("Cantidad de nodos encontrados: "+c);    
+        System.out.println("Cantidad de nodos encontrados: "+c);  
+        System.out.println("");
     }
 
   
+    
+    // metodo para eliminar el primer vagon    METODO 7
+    public void eliminarPrimero(){ 
+           Vagon aux=this.primero; // aux apunta donde esta apuntado primero( primer vagon )
+           this.primero=aux.getSiguiente(); //ahora primero apunta al siguiente del primer vagon
+           System.out.println("El nuevo primer vagon es:"+this.primero.getColor());
+           System.out.println("La nueva lista es:");
+    }
+    
+    
+    
+    
+    public void eliminarUltimo(){ // METODO 8
+        // veamos primero el tamaño de la lista, luego boramos el vagon en la ultima posicion
+        Vagon aux=this.primero;     //aux  lo utilizo para encontrar la cantidad de elementos en la lsita
+        int contador=0;
+            while(aux!=null){
+                aux=aux.getSiguiente();
+                contador++;
+            }
+        
+        Vagon aux2=this.primero;  // aux2 servira para eliminar el ultimo vagon
+            for(int i=1; i<(contador-1);i++){  // me posiciono en el anteultimo vagon
+            aux2=aux2.getSiguiente();
+         }   
+       
+      aux2.setSiguiente(null);// mando el anteultimo a null, luego el ultimo vagon desaparece
+      System.out.println("El ultimo vagon ahora es: "+aux2.getColor());
+      System.out.println("La nueva lista es:");      
+    }
+    
+    
+    
+    // este metodo elimina los vagones contenidos en el valor ingresado  // METODO 9
+    public void dadoUnValorEliminar(int valor){
+       
+        System.out.println("Eliminar vagones contenidos en:" +valor);
+        Vagon aux=this.primero;
+        
+            for(int i=1; i<=valor; i++){ // me posiciono en el objeto de la posicion "valor"
+                 aux=aux.getSiguiente();
+            }     
+        
+        this.primero=aux; // ahora el primero empieza a apuntar al vagon  en la posicion "valor"
+        System.out.println("El vagon de color "+this.primero.getColor()+" es el nuevo primer vagor de la fila");
+    
+    }
+    
+    
+    // recibie la posicion y avisa que vagon esta en esa posicion    METODO 10
+    public void mostrarContenido(int posicion){
+        Vagon aux=this.primero;
+        
+            for(int i=1;i<posicion;i++){
+                aux=aux.getSiguiente();
+            }
+        System.out.println("EL color del vagon de la posicion "+posicion+" es:"+aux.getColor());    
+    }
+    
     
     
     
