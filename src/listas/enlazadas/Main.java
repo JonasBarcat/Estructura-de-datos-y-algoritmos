@@ -13,7 +13,7 @@ public class Main {
         public static void main(String[] args){
         Tren t;
     
-        t=new Tren();//iniciar una lista vacía METODO 1 (el resto en la clase tren)
+        t=new Tren();//iniciar una lista t vacía METODO 1 (el resto en la clase tren)
         
         //agrego unos cuantos nodos al inicio
         t.agregarAlInicio("Rojo");   // USO DEL METODO 3
