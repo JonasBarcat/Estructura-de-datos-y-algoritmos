@@ -134,13 +134,48 @@ public class Tren {
             for(int i=1;i<posicion;i++){
                 aux=aux.getSiguiente();
             }
-        System.out.println("EL color del vagon de la posicion "+posicion+" es:"+aux.getColor());    
+        System.out.println("EL color del vagon de la posicion "+posicion+" es:"+aux.getColor());  
+        System.out.println();
     }
     
     
+    // modifica el color del vagon numero "nodo"            METODO 11
+    public void modificarNodoI(int nodo,String color){
+        Vagon aux=this.primero;
+            for(int i=1; i<nodo; i++){
+                aux=aux.getSiguiente();
+            }
+        aux.setColor(color); // seteo el color del vagon
+        System.out.println("Color del vagon "+nodo+" seteado a:"+color);
+    }
     
     
+    // insertar un nuevo vagon en cierta posicion   METODO 12
+    public void insertarNodo(int posicion,String color){
+        
+        Vagon aux=this.primero;
+        for(int i=1; i<posicion;i++){  //nos paramos en la posicion del nodo a eliminar(aux apunta al siguiente del nodo que quiero eliminar)
+            aux=aux.getSiguiente();
+        }
+        System.out.println("el puntero esta sobre:"+aux.getColor());
+        Vagon v=new Vagon(color); // referencia a la instancia del nuevo nodo
+        v.setSiguiente(aux.getSiguiente()); // apunta al nodo siguiente al de aux
+        aux.setSiguiente(v); // ahora el siguiente de auxiliar apuntará al nuevo nodo insertado
+
+    }
     
+    
+    public void eliminarNodo(int posicion){
+        System.out.println("Se eliminó el nodo: "+posicion);
+        Vagon aux=this.primero;
+        for(int i=1; i<posicion-1;i++){  //nos paramos en la posicion del nodo a eliminar(aux apunta al siguiente del nodo que quiero eliminar)
+            aux=aux.getSiguiente();
+        }
+        Vagon aux2;  //aux2 guardara la direccion del siguiente al que apunta aux
+        aux2=aux.getSiguiente();
+        aux.setSiguiente(aux2.getSiguiente());
+        System.out.println("Se va a eliminar el vagon color: "+aux2.getColor());
+    }
     
     
 }
