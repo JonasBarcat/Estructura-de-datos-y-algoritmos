@@ -16,7 +16,7 @@ public class Tren {
    //constructor del tren
     public Tren() {
     }
-    
+     
    
     
     ///métodos-----------------------------------------
@@ -112,17 +112,20 @@ public class Tren {
     
     
     // este metodo elimina los vagones contenidos en el valor ingresado  // METODO 9
-    public void dadoUnValorEliminar(int valor){
+    public void dadoUnValorEliminar(String color){
+       Vagon aux=this.primero;
+       Vagon aux2;
+       while(aux.getSiguiente()!=null){  // continua solo cuando el siguiente al vagon en el q estamos parados no es nulo
+           aux2=aux.getSiguiente();  // aux2 apunta al siguiente del vagon donde apunta aux
+           if(aux2.getColor().equalsIgnoreCase(color)){  //si el vagon siguiente a aux  (donde apunta aux2) es igual al color ingresado, ignorando el caso, entonces
+               aux.setSiguiente(aux2.getSiguiente()); // hacemos que aux apunte al siguiente de aux2
+               aux2=null; //para eliminar el objeto que contiene ese color (donde esta apuntando aux2) hacemos que aux2 deje de apuntarlo
+           }else{
+               aux=aux2; //si no es el color que indicamos entonces me voy moviendo por la lista
+               aux2=null;
+           }
        
-        System.out.println("Eliminar vagones contenidos en:" +valor);
-        Vagon aux=this.primero;
-        
-            for(int i=1; i<=valor; i++){ // me posiciono en el objeto de la posicion "valor"
-                 aux=aux.getSiguiente();
-            }     
-        
-        this.primero=aux; // ahora el primero empieza a apuntar al vagon  en la posicion "valor"
-        System.out.println("El vagon de color "+this.primero.getColor()+" es el nuevo primer vagor de la fila");
+       }
     
     }
     
